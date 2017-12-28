@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.yyfeng.mapper.UserMapper">
+    <resultMap id="User" type="user">
+        <id column="id" javaType="INTEGER" property="id"/>
+        <result column="name" jdbcType="CHAR" property="name"/>
+        <result column="passwd" jdbcType="CHAR" property="passwd"/>
+    </resultMap>
+
+    <select id="First" parameterType="int" resultMap="User">
+        select * FROM user WHERE id=#{id}
+    </select>
+
+
+    <select id="two" parameterType="String" resultMap="User">
+        select * FROM user WHERE  name LIKE '%${value}%'
+    </select>
+    <!--添加 -->
+
+    <insert id="add" parameterType="user">
+        INSERT INTO user (name,passwd) VALUES (#{name},#{passwd})
+    </insert>
+    <!--删除 -->
+    <delete id="delete" parameterType="int">
+        DELETE  FROM user WHERE id = #{id}
+    </delete>
+    <!-- 更新-->
+    <update id="update" parameterType="user">
+        UPDATE user set user.name=#{name}, user.passwd=#{passwd} where id=#{id}
+    </update>
+</mapper>

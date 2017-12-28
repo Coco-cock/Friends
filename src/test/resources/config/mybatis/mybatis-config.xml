@@ -7,8 +7,4 @@
     <typeAliases>
         <typeAlias type="xyz.yyfeng.po.User" alias="user"/>
     </typeAliases>
-
-    <mappers>
-        <mapper resource="xyz/yyfeng/mapper/user.xml"/>
-    </mappers>
 </configuration>
