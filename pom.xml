@@ -40,16 +40,7 @@
             <artifactId>spring-aspects</artifactId>
             <version>4.3.12.RELEASE</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>4.2.3.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>4.2.3.RELEASE</version>
-        </dependency>
+
     <!--数据持久层-->
       <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
       <dependency>
@@ -81,11 +72,21 @@
 
 
       <!--日志-->
+      <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+          <version>1.1.1</version>
+      </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.8.2</version>
         </dependency>
+      <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-api</artifactId>
+          <version>2.8.2</version>
+      </dependency>
 
       <!--servlet api-->
         <dependency>
@@ -108,6 +109,13 @@
           <groupId>org.junit.jupiter</groupId>
           <artifactId>junit-jupiter-api</artifactId>
           <version>RELEASE</version>
+      </dependency>
+
+      <!--安全shiro -->
+      <dependency>
+          <groupId>org.apache.shiro</groupId>
+          <artifactId>shiro-core</artifactId>
+          <version>1.4.0</version>
       </dependency>
   </dependencies>
   <build>
