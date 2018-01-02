@@ -51,7 +51,14 @@
             <version>4.2.3.RELEASE</version>
         </dependency>
     <!--数据持久层-->
-        <dependency>
+      <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
+      <dependency>
+          <groupId>org.mariadb.jdbc</groupId>
+          <artifactId>mariadb-java-client</artifactId>
+          <version>2.2.0</version>
+      </dependency>
+
+      <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.38</version>
