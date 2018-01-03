@@ -1,4 +1,6 @@
 package xyz.yyfeng.service;
 
-public class Sigin {
+public interface Sigin {
+
+    void adduser();
 }

@@ -1,16 +1,17 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: yyf
-  Date: 17-12-13
-  Time: 下午12:14
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
 <h1>Hello YYF</h1>
+
+<span> ID:${user.toString()} </span>
+<<br>
+<span> Name: ${user.name}</span>
+<span> passwd: ${user.passwd}</span>
 </body>
 </html>
