@@ -18,7 +18,8 @@
         (2)提供一些列：数据绑定，数字和日期的format @NumberFormat, @DateTimeFormat, xml,json默认读写支持
     -->
     <mvc:annotation-driven>
-        <mvc:message-converters>
+        <mvc:message-converters register-defaults="true">
+            <!-- 配置Fastjson支持 -->
             <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
                 <property name="supportedMediaTypes">
                     <list>
@@ -39,7 +40,18 @@
         (1)加入对静态资源的处理：js,gif,png
         (2)允许使用"/"做整体映射
      -->
-    <mvc:default-servlet-handler/>
+    <mvc:resources location="/status/css/" mapping="/css/**" />
+    <mvc:resources location="/status/js/"  mapping="/js/**" />
+    <mvc:resources location="/status/img/" mapping="/img/**"/>
+    <mvc:resources location="favicon.ico"  mapping="/favicon.ico" />
+    
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="xyz.yyfeng.Interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="WEB-INF/view/" />
         <property name="defaultEncoding" value="UTF-8" />
@@ -53,11 +65,12 @@
     </bean>
     <!--ViewResolver 视图解析器-->
     <!--用于支持Servlet、JSP视图解析-->
+
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/view/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
     <!-- 4.扫描web相关的bean -->
-    <context:component-scan base-package="xyz.yyfeng.*" />
+    <context:component-scan base-package="xyz.yyfeng.controller*" />
 </beans>

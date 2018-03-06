@@ -9,10 +9,13 @@
         <result column="passwd" jdbcType="CHAR" property="passwd"/>
     </resultMap>
 
-    <select id="First" parameterType="int" resultMap="User">
-        select * FROM user WHERE id=#{id}
+    <select id="First" parameterType="String" resultMap="User">
+        select * FROM user WHERE name=#{name}
     </select>
 
+    <select id="Firsts" parameterType="String" resultMap="User">
+        select * FROM user WHERE name=#{name}
+    </select>
 
     <select id="two" parameterType="String" resultMap="User">
         select * FROM user WHERE  name LIKE '%${value}%'

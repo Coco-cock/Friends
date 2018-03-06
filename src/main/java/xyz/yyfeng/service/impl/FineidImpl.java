@@ -8,6 +8,7 @@ import xyz.yyfeng.po.User;
 import xyz.yyfeng.service.Fineid;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 public class FineidImpl implements Fineid {
 
@@ -15,7 +16,12 @@ public class FineidImpl implements Fineid {
     private UserMapper userMapper;
 
     @Override
-    public User Fine(int id) {
-        return userMapper.First(id);
+    public User Fine(String name) {
+        return userMapper.First(name);
+    }
+
+    @Override
+    public List<User> Fines(String name) {
+        return userMapper.Firsts(name);
     }
 }

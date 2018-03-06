@@ -21,7 +21,7 @@ public class TestUser {
     @Test
     public void selectUserinfo() {
         UserMapper userMapper = (UserMapper) applicationContext.getBean("userMapper");
-        User user = userMapper.First(1);
+        User user = userMapper.First("yyf");
         System.out.print(user.toString());
 
 

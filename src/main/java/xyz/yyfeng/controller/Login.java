@@ -9,38 +9,32 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import xyz.yyfeng.po.User;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @Controller
 public class Login {
 
     @RequestMapping(value = "/login")
-    public String login(User user, Model model) {
-        Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getName(), user.getPasswd());
-        try {
-            subject.login(token);
-            return "redirect:/admin";
-        } catch (Exception e) {
-//          e.printStackTrace();
-            model.addAttribute("error", "用户名或密码错误");
+    public  String login(HttpServletRequest request, HttpServletResponse response) throws Exception {
+            String Studentid = request.getParameter("inputid");
+            String Passwd = request.getParameter("passwd");
+            String codeid = request.getParameter("codeid");
+
+
             return "login";
-        }
 
     }
-
-    @RequestMapping(value = "/admin")
-    public String admin(){
-        return "admin";
-    }
-
 
     @RequestMapping(value = "/logout",method = RequestMethod.GET)
-    public String logout(Model model){
-        Subject subject = SecurityUtils.getSubject();
-        subject.logout();
-        model.addAttribute("msg","您已经退出登录");
-        return "login";
+    public String logout(HttpSession session) throws Exception{
+        session.removeAttribute("user");
+        session.invalidate();
+        return "redirect:/login";
     }
 }
