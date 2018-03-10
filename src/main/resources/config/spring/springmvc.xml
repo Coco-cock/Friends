@@ -44,11 +44,18 @@
     <mvc:resources location="/status/js/"  mapping="/js/**" />
     <mvc:resources location="/status/img/" mapping="/img/**"/>
     <mvc:resources location="favicon.ico"  mapping="/favicon.ico" />
-    
+    <!---->
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/css/**"/>
+            <mvc:exclude-mapping path="/js/**"/>
+            <mvc:exclude-mapping path="/img/**"/>
+            <mvc:exclude-mapping path="/getValidateCode"/>
+            <mvc:exclude-mapping path="/favicon.ico"/>
+
             <bean class="xyz.yyfeng.Interceptor.LoginInterceptor"/>
+
         </mvc:interceptor>
     </mvc:interceptors>
 

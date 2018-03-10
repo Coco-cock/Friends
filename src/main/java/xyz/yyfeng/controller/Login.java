@@ -20,6 +20,12 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class Login {
 
+    @RequestMapping(value = "/")
+    public String home(){
+
+        return "redirect:/user";
+    }
+
     @RequestMapping(value = "/login")
     public  String login(HttpServletRequest request, HttpServletResponse response) throws Exception {
             String Studentid = request.getParameter("inputid");

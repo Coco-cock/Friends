@@ -20,7 +20,7 @@ public class LoginInterceptor implements HandlerInterceptor{
         if (username!=null){
             return true;
         }
-        request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request,response);
+        response.sendRedirect("/login");
         return false;
     }
 

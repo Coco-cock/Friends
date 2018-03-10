@@ -19,7 +19,9 @@
     <script src="/js/jquery.js"></script>
 </head>
 
-<body class="text-center">
+<body>
+<div id="particles-js">
+    <div id="sigin">
 <form class="form-signin">
     <img class="mb-4" src="/img/kaola.ico" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">校友社交</h1>
@@ -33,11 +35,13 @@
         <img id="randomcode_img" alt="" width="56" height="20" align='absMiddle' src="/getValidateCode"/>
         <a id="re">看不清</a><br>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 </form>
-
-
+    </div>
+</div>
+<script src="/js/particles.min.js"></script>
+<script src="/js/app.js"></script>
 </body>
 <script type="text/javascript">
     $(document).ready(function () {
