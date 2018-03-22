@@ -5,7 +5,7 @@ import xyz.yyfeng.po.User;
 import java.util.List;
 
 public interface UserMapper{
-    public User First(String name);
+    public User Find(String Stdid);
     public List<User> Firsts(String name);
 
 }

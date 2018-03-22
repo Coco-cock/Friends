@@ -7,10 +7,19 @@
         <id column="id" javaType="INTEGER" property="id"/>
         <result column="name" jdbcType="CHAR" property="name"/>
         <result column="passwd" jdbcType="CHAR" property="passwd"/>
+        <result column="Stuid" jdbcType="CHAR" property="Stuid"/>
+        <result column="classId" jdbcType="CHAR" property="classId"/>
+        <result column="Phtoto" jdbcType="CHAR" property="Phtoto"/>
+        <result column="qq" jdbcType="CHAR" property="qq"/>
+        <result column="wechat" jdbcType="CHAR" property="wechat"/>
+        <result column="like" jdbcType="CHAR" property="like"/>
+        <result column="Email" jdbcType="CHAR" property="Email"/>
+        <result column="signature" jdbcType="CHAR" property="signature"/>
+        <result column="userlogo" jdbcType="CHAR" property="userlogo"/>
     </resultMap>
 
-    <select id="First" parameterType="String" resultMap="User">
-        select * FROM user WHERE name=#{name}
+    <select id="Find" parameterType="String" resultMap="User">
+        select * FROM user WHERE Stuid=#{Stuid}
     </select>
 
     <select id="Firsts" parameterType="String" resultMap="User">

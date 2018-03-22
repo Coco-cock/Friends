@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title>Signin Template for Bootstrap</title>
+    <title>用户登陆</title>
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/signin.css" rel="stylesheet">
     <link href="/css/sweetalert.min.css" rel="stylesheet">
@@ -27,8 +27,8 @@
 <form class="form-signin" id="form-signin">
     <img class="mb-4" src="/img/kaola.ico" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal">校友社交</h1>
-    <label for="userid" class="sr-only">Email address</label>
-    <input type="text" id="userid" class="form-control" placeholder="学号" required autofocus>
+    <label for="Stuid" class="sr-only">Email address</label>
+    <input type="text" id="Stuid" class="form-control" placeholder="学号" required autofocus>
     <label for="password" class="sr-only">Password</label>
     <input type="password" id="password" class="form-control" placeholder="密码" required>
     <div style="margin-bottom: 15px">
@@ -53,10 +53,10 @@
     });
 
     $("#submit-btn").click(function () {
-        var user = $("#userid").val();
+        var Stuid = $("#Stuid").val();
         var password = $("#password").val();
         var verifyCode =$("#Code").val();
-        if(user=="") {
+        if(Stuid=="") {
             swal("用户名不可为空!");
         } else if(password==""){
             swal("密码不可为空!");
@@ -64,7 +64,7 @@
             swal("验证码不可为空!");
         }else {
             var data = {
-                userid: user,
+                Stuid: Stuid,
                 password: password,
                 verifyCode: verifyCode
             };

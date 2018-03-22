@@ -43,6 +43,7 @@
     <mvc:resources location="/status/css/" mapping="/css/**" />
     <mvc:resources location="/status/js/"  mapping="/js/**" />
     <mvc:resources location="/status/img/" mapping="/img/**"/>
+    <mvc:resources location="/status/assets/" mapping="/assets/**"/>
     <mvc:resources location="favicon.ico"  mapping="/favicon.ico" />
     <!---->
     <mvc:interceptors>
@@ -51,6 +52,7 @@
             <mvc:exclude-mapping path="/css/**"/>
             <mvc:exclude-mapping path="/js/**"/>
             <mvc:exclude-mapping path="/img/**"/>
+            <mvc:exclude-mapping path="/assets/**"/>
             <mvc:exclude-mapping path="/getValidateCode"/>
             <mvc:exclude-mapping path="/favicon.ico"/>
 
@@ -67,7 +69,6 @@
     <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
         <property name="suffix" value=".html" />
         <property name="contentType" value="text/html;charset=UTF-8" />
-        <!-- 此变量值为pageContext.request, 页面使用方法：rc.contextPath -->
         <property name="requestContextAttribute" value="rc" />
     </bean>
     <!--ViewResolver 视图解析器-->

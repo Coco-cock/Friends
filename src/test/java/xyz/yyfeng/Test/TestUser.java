@@ -21,8 +21,8 @@ public class TestUser {
     @Test
     public void selectUserinfo() {
         UserMapper userMapper = (UserMapper) applicationContext.getBean("userMapper");
-        User user = userMapper.First("yyf");
-        System.out.print(user.toString());
+        User user = userMapper.Find("1406014303");
+        System.out.print(user.getStuid());
 
 
     }

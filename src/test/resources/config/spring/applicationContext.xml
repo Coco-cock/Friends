@@ -51,5 +51,4 @@
         <property name="basePackage" value="xyz.yyfeng.mapper"></property>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
-    <context:component-scan base-package="xyz.yyfeng.*" />
 </beans>

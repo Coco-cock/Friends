@@ -13,6 +13,8 @@
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-<bean id="id" class="xyz.yyfeng.service.impl.FineidImpl"/>
+
+<bean id="id" class="xyz.yyfeng.service.impl.UserServiceImpl"/>
+<bean id="class" class="xyz.yyfeng.service.impl.ClassServiceImpl"/>
 
 </beans>

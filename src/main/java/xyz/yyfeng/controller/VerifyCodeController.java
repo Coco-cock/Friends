@@ -19,7 +19,7 @@ public class VerifyCodeController {
         repo.setHeader("Pragma", "no-cache");
         repo.setHeader("Cache-Control", "no-cache");
         repo.setDateHeader("Expires", 0);
-        String verifyCode = VerifyCodeUtil.generateTextCode(VerifyCodeUtil.TYPE_NUM_ONLY, 4, null);
+        String verifyCode = VerifyCodeUtil.generateTextCode(VerifyCodeUtil.TYPE_NUM_LOWER, 4, null);
         //将验证码放到HttpSession里面
         req.getSession().setAttribute("verifyCode", verifyCode);
         //设置输出的内容的类型为JPEG图像

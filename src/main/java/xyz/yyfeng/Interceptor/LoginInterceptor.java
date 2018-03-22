@@ -2,6 +2,7 @@ package xyz.yyfeng.Interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import xyz.yyfeng.po.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +17,8 @@ public class LoginInterceptor implements HandlerInterceptor{
             return true;
         }
         HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("user");
-        if (username!=null){
+        User user = (User)session.getAttribute("user");
+        if (user!=null){
             return true;
         }
         response.sendRedirect("/login");
