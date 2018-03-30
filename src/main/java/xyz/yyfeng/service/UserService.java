@@ -15,4 +15,6 @@ public interface UserService {
     public void setStart(Start start);
     public List<Message>showmessage(String Stuid);
     public void setmessage(Message message);
+    public Integer updateinfo(User user);
+    public void updateps(String Stuid,String newps);
 }

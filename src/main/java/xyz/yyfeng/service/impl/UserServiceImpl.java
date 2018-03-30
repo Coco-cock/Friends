@@ -49,4 +49,14 @@ public class UserServiceImpl implements UserService {
     public void setmessage(Message message) {
         userMapper.setmessage(message);
     }
+
+    @Override
+    public Integer updateinfo(User user) {
+        return userMapper.updateinfo(user);
+    }
+
+    @Override
+    public void updateps(String Stuid, String newps) {
+        userMapper.updateps(Stuid,newps);
+    }
 }

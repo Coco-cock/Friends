@@ -12,7 +12,7 @@
         <result column="Phtoto" jdbcType="CHAR" property="Phtoto"/>
         <result column="qq" jdbcType="CHAR" property="qq"/>
         <result column="wechat" jdbcType="CHAR" property="wechat"/>
-        <result column="like" jdbcType="CHAR" property="like"/>
+        <result column="likes" jdbcType="CHAR" property="like"/>
         <result column="Email" jdbcType="CHAR" property="Email"/>
         <result column="signature" jdbcType="CHAR" property="signature"/>
         <result column="userlogo" jdbcType="CHAR" property="userlogo"/>

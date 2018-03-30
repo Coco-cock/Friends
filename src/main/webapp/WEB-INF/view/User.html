@@ -53,29 +53,29 @@
                 <div class="col-lg-3">
                     <div class="showback">
                         <h2><i class="fa fa-address-card"></i>&nbsp;&nbsp;所属系院</h2>
-                        <h1 style="text-align: center">计算机科学与技术</h1>
+                        <h1 style="text-align: center">${user.speciality}</h1>
                     </div><!--/showback -->
                 </div>
                 <div class="col-lg-12">
                     <div class="showback" style="height:300px">
                         <h2><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;个性签名</h2><hr>
-                        <h2>${user.signature}</h2>
+                        <h2>${user.signature!}</h2>
                     </div><!--/showback -->
                 </div>
                 <div class="col-lg-6">
                     <div class="showback" style="height:358px">
                         <h2><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;爱好</h2><hr>
-                        <h2>${user.like}</h2>
+                        <h2>${user.like!}</h2>
                     </div><!--/showback -->
                 </div>
                 <div class="col-lg-6">
                     <div class="showback" style="height:358px">
                         <h2><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;联系方式</h2><hr>
 
-                        <h2 ><i class="fa fa-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;${user.phtoto}</h2>
-                        <h2 ><i class="fa fa-qq"></i>&nbsp;&nbsp;&nbsp;&nbsp;${user.qq}</h2>
-                        <h2 ><i class="fa fa-wechat"></i>&nbsp;&nbsp;&nbsp;&nbsp;${user.wechat}</h2>
-                        <h2 ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp;${user.email}</h2>
+                        <h2 ><i class="fa fa-phone"></i>&nbsp;&nbsp;&nbsp;&nbsp;${user.phtoto!}</h2>
+                        <h2 ><i class="fa fa-qq"></i>&nbsp;&nbsp;&nbsp;&nbsp;${user.qq!}</h2>
+                        <h2 ><i class="fa fa-wechat"></i>&nbsp;&nbsp;&nbsp;&nbsp;${user.wechat!}</h2>
+                        <h2 ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp;${user.email!}</h2>
                     </div><!--/showback -->
                 </div>
 

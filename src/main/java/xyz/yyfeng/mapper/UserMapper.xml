@@ -12,7 +12,7 @@
         <result column="Phtoto" jdbcType="CHAR" property="Phtoto"/>
         <result column="qq" jdbcType="CHAR" property="qq"/>
         <result column="wechat" jdbcType="CHAR" property="wechat"/>
-        <result column="like" jdbcType="CHAR" property="like"/>
+        <result column="likes" jdbcType="CHAR" property="like"/>
         <result column="Email" jdbcType="CHAR" property="Email"/>
         <result column="signature" jdbcType="CHAR" property="signature"/>
         <result column="userlogo" jdbcType="CHAR" property="userlogo"/>
@@ -69,4 +69,11 @@
     <insert id="setmessage" parameterType="xyz.yyfeng.po.Message">
         INSERT INTO message (Metuid,fromid,content) VALUES (#{fromid},#{Stuid},#{content})
     </insert>
+    <update id="updateinfo" parameterType="user">
+        update user set Phtoto=#{Phtoto},qq=#{qq},Email=#{Email},wechat=#{wechat},signature=#{signature},likes=#{like}
+        where Stuid=#{Stuid}
+    </update>
+    <update id="updateps" parameterType="String">
+        update user set passwd = #{1} where Stuid=#{0}
+    </update>
 </mapper>

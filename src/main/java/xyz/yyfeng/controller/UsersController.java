@@ -16,6 +16,7 @@ import xyz.yyfeng.po.User;
 import xyz.yyfeng.service.UserService;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletRegistration;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -105,4 +106,44 @@ public class UsersController {
         rufelt.put("error",0);
         return rufelt;
     }
+    @RequestMapping(value = "/user/updateinfo",method = RequestMethod.GET)
+    public String updateinfo(HttpSession session,Model model){
+        User user = (User) session.getAttribute("user");
+        model.addAttribute("user",user);
+
+        return "updateinfo";
+
+    }
+    @RequestMapping(value = "/setinfo",method = RequestMethod.POST)
+    public @ResponseBody Map setinfo(User user,HttpSession session){
+        Map<String, Object> rufelt = new HashMap<String, Object>();
+        User me = (User) session.getAttribute("user");
+        String stuid =me.getStuid();
+        user.setStuid(stuid);
+       Integer integer =  userService.updateinfo(user);
+           rufelt.put("error",0);
+           session.setAttribute("user",userService.FindUser(stuid));
+        return rufelt;
+    }
+    @RequestMapping(value = "/user/updatepasswd",method = RequestMethod.GET)
+    public String showpasswd(){
+        return "updatepasswd";
+    }
+
+
+    @RequestMapping(value = "/updateps",method = RequestMethod.POST)
+    public @ResponseBody Map updatepasswd(HttpSession session,HttpServletRequest request){
+        Map<String, Object> rufelt = new HashMap<String, Object>();
+        User user = (User) session.getAttribute("user");
+        String old = request.getParameter("oldps");
+        String newps = request.getParameter("newps");
+        if (!user.getPasswd().equals(old)){
+            rufelt.put("error",1);
+        }else {
+            userService.updateps(user.getStuid(),newps);
+            rufelt.put("error",0);
+        }
+        return rufelt;
+    }
+
 }
