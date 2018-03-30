@@ -17,9 +17,55 @@
 
     <!-- Custom styles for this template -->
     <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/css/sweetalert.min.css" rel="stylesheet">
     <link href="/assets/css/style-responsive.css" rel="stylesheet">
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/js/sweetalert.min.js"></script>
 </head>
+<style>
+    #img{
+        width: 100px;
+        height: 100px;
+        float: left;
+        margin-right: 30px;
+    }
+    .p1{
+        font-size: 28px;
+        margin-top: 20px;
+        color: black;
 
+    }
+    .p2{
+        color: gray;
+    }
+    #item{
+        background: #F7F7F7;
+        padding: 10px;
+        margin-bottom: 15px;
+        box-shadow: 0px 3px 2px #aab2bd
+    }
+    .search input{
+        margin-top: 20px;
+        width: 1035px;
+        height: 63px;
+        border-radius: 3px;
+        border: solid 1px #dbdee1;
+        background-color: #fff;
+        color: #4c4145;
+        font-size: 13px;
+        padding-left: 10px;
+        margin-left: 250px;
+    }
+    .search button{
+        color: white;
+        width: 100px;
+        height: 60px;
+        background-color:#38f;
+        border: solid 1px #40f;
+        font-size: 22px;
+    }
+</style>
+<div id="app">
 <section id="container" >
     <!--  头部导航栏-->
     <#include "/Template/head.html">
@@ -30,17 +76,72 @@
     <section id="main-content" >
         <section class="wrapper">
             <div class="row mt">
-                <
+                <div class="search">
+                    <input type="text" name="" id="sname" value="" placeholder="输入要查询的姓名"/>
+                    <button id="scran">搜索</button>
+                </div>
+                <div class="col-lg-12">
+                    <br>
+                    <hr>
+                    <br>
+
+            </div>
+                <div id="list">
+
+                </div>
             </div>
         </section>
     </section>
 
 </section>
+</div>
 
+<script>
+    $("#scran").click(function () {
+        var sname = $("#sname").val();
+        if(sname == "") {
+            swal("请输入要查询的内容");
+        }else {
+            var data = {
+                name:sname
+            };
+            $.ajax({
+                async: false,//同步，待请求完毕后再执行后面的代码
+                type: "POST",
+                url: '/searchfriend',
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                data: data,
+                dataType: "json",
+                success: function (data) {
+                    $("#list").empty();
 
-<!-- js placed at the end of the document so the pages load faster -->
-<script src="/assets/js/jquery.js"></script>
-<script src="/assets/js/jjquery-1.8.3.min.js"></script>
+                   if(data.error == "1"){
+                       swal("没有找到，或者输入正确的姓名")
+                   }else{
+
+                       console.log(data.data);
+                       $.each(data.data,function (i,n) {
+                               var str="";
+                               str+="<a href=\"friend/"+n.stuid+"\">";
+                               str+="<div class=\"col-md-4\" style=\"margin-bottom: 50px\" id=\"item\">";
+                               str+="<img id=\"img\" src=\""+n.userlogo+"\" class=\"img-rounded\"/>";
+                               str+="<p class=\"p1\">"+n.name+ "&nbsp;&nbsp;"+ n.stuid+"</p>";
+                               str+="<p class=\"p2\">"+n.speciality+"</p>";
+                               str+="</div>";
+                               str+="</a>";
+                               $("#list").append(str);
+
+                       })
+
+                   }
+                },
+                error: function () {
+                    swal("数据获取失败")
+                }
+            })
+        }
+    })
+</script>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script class="include" type="text/javascript" src="/assets/js/jquery.dcjqaccordion.2.7.js"></script>
 <script src="/assets/js/jquery.scrollTo.min.js"></script>

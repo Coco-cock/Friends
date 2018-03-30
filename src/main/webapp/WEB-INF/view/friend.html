@@ -17,7 +17,10 @@
 
     <!-- Custom styles for this template -->
     <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/css/sweetalert.min.css" rel="stylesheet">
     <link href="/assets/css/style-responsive.css" rel="stylesheet">
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/js/sweetalert.min.js"></script>
 </head>
 
 <section id="container" >
@@ -39,15 +42,13 @@
                 <div class="col-lg-3">
                     <div class="showback">
                         <h2><i class="fa fa-address-card"></i>&nbsp;&nbsp;学号</h2>
-                        <h1 style="text-align: center">
-                            ${friend.stuid[8..9]}
-                        </h1>
+                        <h1 style="text-align: center" id="stuid">${friend.stuid[8..9]}</h1>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="showback">
                         <h2><i class="fa fa-address-card"></i>&nbsp;&nbsp;班级</h2>
-                        <h1 style="text-align: center">${friend.classId}</h1>
+                        <h1 style="text-align: center" id="clid">${friend.classId}</h1>
                     </div><!--/showback -->
                 </div>
                 <div class="col-lg-3">
@@ -56,7 +57,19 @@
                         <h1 style="text-align: center">计算机科学与技术</h1>
                     </div><!--/showback -->
                 </div>
-
+                <div class="col-lg-4">
+                    <div class="showback" style="height: 279.86px">
+                        <h2><i class="fa fa-address-card"></i>&nbsp;&nbsp;关注</h2>
+                        <button class="btn btn-primary btn-lg btn-block" id="start">点击关注</button>
+                    </div><!--/showback -->
+                </div>
+                <div class="col-lg-8">
+                    <div class="showback">
+                        <h4><i class="fa fa-address-card"></i>&nbsp;&nbsp;留言板</h4><hr>
+                        <textarea class="form-control" rows="6" id="message"></textarea><br>
+                        <button  class="btn btn-success" id="push">发布</button>
+                    </div><!--/showback -->
+                </div>
                 <div class="col-lg-12">
                     <div class="showback" style="height:300px">
                         <h2><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;个性签名</h2><hr>
@@ -89,10 +102,68 @@
 
 
 </section>
+<script>
+    $("#start").click(function () {
+        var sid = $("#stuid").html();
+        var cid = $("#clid").html();
+        var data = {
 
+            fromid:cid+sid
+        };
+        $.ajax({
+                async: false,//同步，待请求完毕后再执行后面的代码
+                type: "POST",
+                url: '/setstart',
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                data: data,
+                dataType: "json",
+                success: function (data) {
+                    if (data.error == "1") {
+                        swal("已在你的关注列表")
+                    }else {
+                        swal("关注成功")
+                    }
+                },
+                error: function () {
+                    swal("数据获取失败")
+                }
+            })
+
+    });
+    $("#push").click(function () {
+        var sid = $("#stuid").html();
+        var cid = $("#clid").html();
+        var message = $("#message").val();
+        if (message == "") {
+            swal("请输入内容")
+        }else {
+            var data = {
+                fromid: cid + sid,
+                content:message
+            };
+            $.ajax({
+                async: false,//同步，待请求完毕后再执行后面的代码
+                type: "POST",
+                url: '/setmessage',
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                data: data,
+                dataType: "json",
+                success: function (data) {
+                    if (data.error == "0") {
+                        swal("留言成功")
+                    }
+                },
+                error: function () {
+                    swal("数据获取失败")
+                }
+            })
+        }
+    })
+
+</script>
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="/assets/js/jquery.js"></script>
+
 <script src="/assets/js/jjquery-1.8.3.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script class="include" type="text/javascript" src="/assets/js/jquery.dcjqaccordion.2.7.js"></script>

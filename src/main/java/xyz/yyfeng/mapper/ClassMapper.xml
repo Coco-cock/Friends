@@ -16,6 +16,7 @@
         <result column="Email" jdbcType="CHAR" property="Email"/>
         <result column="signature" jdbcType="CHAR" property="signature"/>
         <result column="userlogo" jdbcType="CHAR" property="userlogo"/>
+        <result column="speciality" jdbcType="CHAR" property="speciality"/>
     </resultMap>
 
     <select id="classmate" parameterType="String" resultMap="User">

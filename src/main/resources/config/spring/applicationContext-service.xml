@@ -16,5 +16,6 @@
 
 <bean id="id" class="xyz.yyfeng.service.impl.UserServiceImpl"/>
 <bean id="class" class="xyz.yyfeng.service.impl.ClassServiceImpl"/>
+    <bean id="friend" class="xyz.yyfeng.service.impl.FriendServiceImpl"/>
 
 </beans>

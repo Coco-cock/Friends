@@ -5,7 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import xyz.yyfeng.mapper.FriendMapper;
 import xyz.yyfeng.mapper.UserMapper;
+import xyz.yyfeng.po.Searchuser;
 import xyz.yyfeng.po.User;
 
 
@@ -20,9 +22,9 @@ public class TestUser {
     }
     @Test
     public void selectUserinfo() {
-        UserMapper userMapper = (UserMapper) applicationContext.getBean("userMapper");
-        User user = userMapper.Find("1406014303");
-        System.out.print(user.getStuid());
+        FriendMapper friendMapper = (FriendMapper)applicationContext.getBean("friendMapper");
+        Searchuser searchuser = (Searchuser) friendMapper.searchfriends("李");
+        System.out.print(searchuser.getStuid());
 
 
     }

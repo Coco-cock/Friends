@@ -13,6 +13,15 @@ public class User {
     private String Email;
     private String signature;
     private String userlogo;
+    private String speciality;
+
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
 
     public String getQq() {
         return qq;

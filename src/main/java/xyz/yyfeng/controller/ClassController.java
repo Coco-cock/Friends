@@ -1,12 +1,10 @@
 package xyz.yyfeng.controller;
 
 
-import org.apache.shiro.web.session.HttpServletSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import xyz.yyfeng.po.User;
 import xyz.yyfeng.service.ClassService;
 

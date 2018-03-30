@@ -16,8 +16,28 @@
         <result column="Email" jdbcType="CHAR" property="Email"/>
         <result column="signature" jdbcType="CHAR" property="signature"/>
         <result column="userlogo" jdbcType="CHAR" property="userlogo"/>
+        <result column="speciality" jdbcType="CHAR" property="speciality"/>
     </resultMap>
 
+    <resultMap id="startlist" type="xyz.yyfeng.po.Start">
+        <result column="name" jdbcType="CHAR" property="name"/>
+        <result column="Stuid" jdbcType="CHAR" property="Stuid"/>
+        <result column="userlogo" jdbcType="CHAR" property="userlogo"/>
+        <result column="speciality" jdbcType="CHAR" property="speciality"/>
+        <result column="signature" jdbcType="CHAR" property="signature"/>
+    </resultMap>
+    <resultMap id="startt" type="xyz.yyfeng.po.Start">
+        <result column="MeStuid" jdbcType="CHAR" property="Stuid"/>
+        <result column="Fromid" jdbcType="CHAR" property="fromid"/>
+    </resultMap>
+    <resultMap id="message" type="xyz.yyfeng.po.Message">
+        <result column="name" jdbcType="CHAR" property="name"/>
+        <result column="Stuid" jdbcType="CHAR" property="Stuid"/>
+        <result column="userlogo" jdbcType="CHAR" property="userlogo"/>
+        <result column="speciality" jdbcType="CHAR" property="speciality"/>
+        <result column="Datetime" jdbcType="TIMESTAMP" property="Datetime"/>
+        <result column="content" jdbcType="CHAR" property="content"/>
+    </resultMap>
     <select id="Find" parameterType="String" resultMap="User">
         select * FROM user WHERE Stuid=#{Stuid}
     </select>
@@ -26,20 +46,27 @@
         select * FROM user WHERE name=#{name}
     </select>
 
-    <select id="two" parameterType="String" resultMap="User">
-        select * FROM user WHERE  name LIKE '%${value}%'
+    <select id="getStarts" parameterType="String" resultMap="startlist">
+      select name,Stuid,userlogo,speciality,signature from user where Stuid in
+    (select Fromid from starlist where MeStuid=#{Stuid})
+
+    </select>
+
+    <select id="slStart" parameterType="start" resultMap="startt">
+        select * from starlist where MeStuid = #{Stuid} and Fromid = #{fromid}
     </select>
     <!--添加 -->
 
-    <insert id="add" parameterType="user">
-        INSERT INTO user (name,passwd) VALUES (#{name},#{passwd})
+    <insert id="setStart" parameterType="start">
+        INSERT INTO starlist (MeStuid,Fromid) VALUES (#{Stuid},#{fromid})
     </insert>
     <!--删除 -->
-    <delete id="delete" parameterType="int">
-        DELETE  FROM user WHERE id = #{id}
-    </delete>
-    <!-- 更新-->
-    <update id="update" parameterType="user">
-        UPDATE user set user.name=#{name}, user.passwd=#{passwd} where id=#{id}
-    </update>
+   <select id="showmessage" parameterType="String" resultMap="message">
+       select user.name,user.speciality,user.userlogo,user.Stuid,
+       message.Datetime,message.content  from user ,message where
+       message.Metuid=#{Stdid} and message.fromid=user.Stuid
+   </select>
+    <insert id="setmessage" parameterType="xyz.yyfeng.po.Message">
+        INSERT INTO message (Metuid,fromid,content) VALUES (#{fromid},#{Stuid},#{content})
+    </insert>
 </mapper>
