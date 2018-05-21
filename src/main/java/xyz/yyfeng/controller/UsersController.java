@@ -1,6 +1,7 @@
 package xyz.yyfeng.controller;
 
 
+import com.alibaba.fastjson.JSONArray;
 import eu.bitwalker.useragentutils.UserAgent;
 import eu.bitwalker.useragentutils.Browser;
 import eu.bitwalker.useragentutils.OperatingSystem;
@@ -145,5 +146,4 @@ public class UsersController {
         }
         return rufelt;
     }
-
 }
